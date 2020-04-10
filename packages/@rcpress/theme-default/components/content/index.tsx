@@ -1,4 +1,4 @@
-import React, { FunctionComponent } from 'react';
+import React, { FunctionComponent, useEffect } from 'react';
 import { Anchor } from 'antd';
 import EditButton from './EditButton';
 import moment from 'moment';
@@ -7,6 +7,7 @@ import { useSiteContext } from '@rcpress/core';
 import SEO from '../SEO/SEO';
 import PrevAndNext from '../prevAndNext';
 import Toc from '../Toc';
+import { SequenceDiagram } from '../../utils/sequence-diagram-web'
 
 const Article: FunctionComponent<{
   prev: React.Component | null;
@@ -43,6 +44,13 @@ const Article: FunctionComponent<{
 
   const currentPageTitle = getPageTitle(currentPageInfo.title, title);
   const { prev, next, isMoblie } = props;
+
+  useEffect(() => {
+    setTimeout(() => {
+      SequenceDiagram.convertAll()
+    }, 300);
+  }, [])
+
   return (
     <>
       <SEO
