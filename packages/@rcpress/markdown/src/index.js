@@ -27,6 +27,7 @@ const createMarkdown = async ({ markdown: options = {}, base = '/' }) => {
     maxTocDepth: 3,
     mdastPlugins: resolvePlugin(
       [
+        'remark-sequence',
         'remark-default-class-name',
         'remark-header-custom-ids',
         'remark-img-warpper-p',
